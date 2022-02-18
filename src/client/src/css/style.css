@@ -1,0 +1,403 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+:root{
+    --body-BG-color: #314654;
+    --nav-BG-color:darkgrey;
+    --nav-selected-text-color:#eb7563;
+    --header-color:#ebe4df;
+    --subHeader-color:#bbb6b3;
+    --disabled-color:rgb(185, 51, 51);
+    --enabled-color:rgb(35, 82, 35);
+
+    --client-text-color:black;
+    --clientCard-BG-color:#ebe4df;
+    --clientCard-border-color:#ebe4df;
+    --clientCard-boxShadow-color:#654641;
+    
+    --clientCard-active-color:rgb(0, 0, 0, .8);
+
+    --changedBorder-color:orange;
+}
+
+body {
+    background-color:var(--body-BG-color);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*-----Tables */
+table {
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px 0px 10px;
+    border-spacing: 20px 5px;
+    border-collapse: separate;
+    box-shadow: 5px, 0px, black;
+    font:bold;
+}
+td {
+    color: var(--tableData-textColor);
+    font-size: 25px;
+    padding:5px;
+    
+    text-shadow: 1px 1px 2px black;
+    text-align: start;
+}
+tr{
+    size: 100%;
+    background-color: var(--nav-selected-text-color);
+}
+.tHeaderRow {
+    top: 0px;
+    position: sticky;
+    background-color: var(--body-BG-color);
+}
+th {
+    text-align: start;
+    font-size: 35px;
+}
+
+/*----Links */
+.navbar a {
+    text-decoration: none;
+    text-shadow: 2px 0 5px black;
+    color:white;
+}
+a {
+    text-decoration: none;
+}
+a:visited{
+    color:none;
+}
+a:hover{
+    color:var(--nav-selected-text-color);
+}
+.selectedNav{
+    color:var(--nav-selected-text-color);
+}
+.logo{
+    font-weight: bold;
+    font-size: 32px;
+}
+
+img{
+    width: 100%;
+}
+
+/* ----NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: nowrap;
+    column-gap: 1em;
+    background-color: var(--nav-BG-color);
+    width:300px;
+    height:60px;
+    border-radius: 2em;
+}
+.navbar ul{
+    display:flex;
+    column-gap:1em;
+}
+.navbarItem{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* -------Add Client Button */
+.plus{
+    width: 60px;
+    height: 60px;
+    background:linear-gradient(white, white), linear-gradient(white, white), var(--nav-BG-color);
+    background-position: center;
+    background-size:  70% 10px, 10px 70%;
+    background-repeat: no-repeat;
+    border-style: none;
+    border-radius: 50%;
+}
+.plus:hover{
+    background:linear-gradient(var(--nav-selected-text-color), var(--nav-selected-text-color)), 
+    linear-gradient(var(--nav-selected-text-color), var(--nav-selected-text-color)), var(--nav-BG-color);
+    background-position: center;
+    background-size:70% 10px, 10px 70%;
+    background-repeat: no-repeat;
+    cursor:pointer;
+}
+.fixed-top-right{
+    position:fixed;
+    right:0px;
+    top:0px;
+    margin:.5%;
+}
+
+/* ----Client Cards */
+.recents{
+    display:flex;
+    justify-content:center;
+    
+}
+.clientCard {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    margin:3px 2%;
+    padding:1em;
+    background-color: var(--clientCard-BG-color);
+    color:var(--client-text-color);
+    border:2px solid var(--clientCard-border-color);
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 3px var(--clientCard-boxShadow-color);
+    height: 110px;
+    max-height: 110px;
+    transition: transform .2s;
+    line-height: 1.4;
+    cursor:pointer;
+    
+}
+.clientCard:hover {
+    transform: scale(.95);
+}
+.clientCard:active{
+    box-shadow: inset 0 0 0 6px var(--clientCard-active-color);
+}
+.preview-text{
+    min-width: 140px;
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: hidden;
+}
+
+/*-----Client Search  */
+.searchForm{
+    display:flex;
+    padding-top: 10px;
+    justify-content: center;
+}
+.searchBox{
+    width:70%;
+    height:40px;
+    font-size: 20px;
+    outline:none;
+    padding-left: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border:2px rgb(219, 150, 0);
+    border-style:ridge;
+    color:black;
+    font-weight: bold;
+    border-radius: 10px;
+}
+::placeholder{
+    color:black;
+}
+.subheaderSmall{
+    margin-top: none;
+    align-self: center;
+    font-size: 18px;
+    color: var(--subHeader-color);
+}
+.client-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.client-list li{
+    display: flex;
+    flex-direction: row;
+}
+.clientResult{
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    column-gap: 25px;
+    overflow: hidden;
+    margin: 10px;
+    max-height: 120px;
+    font-size: 18px;
+    padding: 2px;
+    transition: transform .3s;
+    background-color: var(--clientCard-BG-color);
+    cursor:pointer;
+}
+.clientResult:hover{
+    transform: scale(95%);
+}
+.clientResultText{
+    color: var(--client-text-color);
+}
+.clientResultButton{
+    margin: 10px 1px;
+    height: 35px;
+    max-height: 40px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+.clientResultButton:hover{
+    transform: scale(95%);
+}
+
+/*-----Form Controls */
+.inputFieldBox {
+    flex-grow: 1;
+    padding: 4px;
+    margin: 1%;
+    border-color:var(--clientCard-border-color);
+    border-style: solid;
+}
+.legendTitle{
+    font-size: 2.1875rem;
+    color: var(--subHeader-color);
+}
+.inputLabel{
+    display:grid;
+    width:100%;
+    grid-template-columns:repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    color: var(--header-color);
+    text-shadow: 1px 0px 2px black;
+}
+.inputTextField{
+    grid-column: 2/5;
+    grid-row: 1;
+    width: 100%;
+    max-height: 1.8rem;
+    padding:.125rem .0625rem;
+    font-size: 1rem;
+    background-color: var(--clientCard-BG-color);
+    color:black
+}
+.inputState{
+    grid-column: 2/5;
+    max-width: 2rem;
+    grid-row: 1;
+    padding:.125rem .0625rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: var(--clientCard-BG-color);
+    color:black
+}
+.zipInfo{
+    grid-column: 2/5;
+    grid-row: 1;
+    max-width: 3.5rem;
+    padding:.125rem .0625rem;
+    font-size: 1rem;
+    background-color: var(--clientCard-BG-color);
+    color:black;
+}
+.submitButton{
+    padding:.8rem .5rem;
+    margin:1rem;
+    max-width: 8rem;
+    align-self: flex-end;
+    font-weight: bold;
+}
+.submitButton:hover{
+    background-color: var(--enabled-color);
+    color: var(--nav-selected-text-color);
+    cursor:pointer;
+}
+.submitButton:disabled:hover{
+    background-color: var(--disabled-color);
+    cursor: auto;
+}
+.deleteButton{
+    padding:.8rem .5rem;
+    margin:1rem;
+    max-width: 8rem;
+    align-self: flex-end;
+    font-weight: bold;
+}
+.deleteButton:hover{
+    background-color: var(--enabled-color);
+    color: var(--nav-selected-text-color);
+    cursor:pointer;
+    transform:scale(85%);
+}
+
+.Modal{
+    position: absolute;
+    padding:20px;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: -50%;
+    overflow: auto;
+    outline: none;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+.Overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.80);
+}
+.modalButton{
+    padding:.8rem .5rem;
+    margin:1rem;
+    font-weight: bold;
+}
+.modalButton:hover{
+    cursor: pointer;
+}
+
+
+/*-------Conditional CSS */
+.changedBorder{
+    border-color:var(--changedBorder-color);
+}
+.defaultBorder{
+    border-color:var(--clientCard-border-color);
+}
+
+
+/* -----Utilities */
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.flex-nowrap{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.flex-vertical{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.header-center{
+    align-self: center;
+    font-size:2.2rem;
+    font-weight: bold;
+    color:var(--header-color);
+}
+.centeredBox{
+    display:flex;
+    width:600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
