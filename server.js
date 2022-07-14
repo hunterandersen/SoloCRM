@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require('express');
 const mysqlModule = require('mysql2');
 //Because of the password update to using the Sha-2 or whatever ecryption. 
 //mysql2 is a fork that got started to solve that issue, while retaining the updated, more secure password.
 
 const app = express();
-const PORT_NUMBER = process.env.PORT || 5000;
+const PORT_NUMBER = parseInt(process.env.PORT) || 5000;
 
 //Set up the middleware
 app.use(express.json());
@@ -15,8 +16,8 @@ app.use(express.json());
 const db = mysqlModule.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'D!rt2St3mTree',
-    database:'wallerpianos'
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 //Connect to the wallerpianos database
@@ -60,8 +61,8 @@ app.delete('/client/removeClient/:clientId', (req, res) => {
 app.post('/client/newClient', (req, res) => {
     let keys = Object.keys(req.body);
 
-    console.log(keys);
-    console.log(keys.length);
+    //console.log(keys);
+    //console.log(keys.length);
 
     if(keys.length > 0){
         for(let i = 1; i<keys.length; i++){
