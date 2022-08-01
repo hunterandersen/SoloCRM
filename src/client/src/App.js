@@ -7,13 +7,13 @@ import AddClient from './components/NewData/AddClient';
 import Calendar from './components/Calendar/Calendar';
 
 import {BrowserRouter, Switch, Route, NavLink} from "react-router-dom";
-import UserAuthenticate from './components/Authentication/UserAuthenticate';
+// import UserAuthenticate from './components/Authentication/UserAuthenticate';
 
 function App() {
   return (
     <BrowserRouter>
         <Navbar />
-        <UserAuthenticate />
+        {/* <UserAuthenticate /> */}
         <Switch>
             <Route exact path="/">
                 <div>

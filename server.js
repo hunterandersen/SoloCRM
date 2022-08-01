@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mysqlModule = require('mysql2');
 //Because of the password update to using the Sha-2 or whatever ecryption. 
@@ -13,10 +14,10 @@ app.use(express.json());
 //Create the database connection
 //Use environment variables for password stuff
 const db = mysqlModule.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'D!rt2St3mTree',
-    database:'wallerpianos'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database:process.env.DB_NAME
 });
 
 //Connect to the wallerpianos database
